@@ -1,7 +1,8 @@
 <!doctype html> 
 <?php 
-include('db.php');  
-$sql = "select *from tasks";   
+include('db.php');    
+
+$sql = "select *from task";   
 
 $rows = $db->query($sql); 
 
@@ -28,7 +29,7 @@ $rows = $db->query($sql);
 
          <div class="col-sm-5 col-sm-8 col-md-10 col-md-3  col-sm-3 col-md-offset-1">  
          <table class="table"> 
-             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Add Task</button> 
+             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" href="add.php">Add Task</button> 
            <button class="btn" id="print">Print</button>
   <thead>
     <tr>
@@ -48,11 +49,11 @@ $rows = $db->query($sql);
             echo"   
             <tr> 
             <th scope='row'>".$result['id']."</th>
-            <td>".$result['activity']."</td>
-            <td>".$result['date']."</td>
-            <td>".$result['urgency']."</td> 
+            <td>".$result['name']."</td>
+            <td>".$result['data']."</td>
+            <td>".$result['importance']."</td> 
             <td> 
-            <button class='btn' id='edit' data-toggle='modal' data-target='EditModal'>Edit</button> 
+            <button class='btn' id='edit' data-toggle='modal' data-target='#EditModal'>Edit</button> 
             <button class='btn' id='del'>Delete</button>
             </td>       
             
@@ -90,23 +91,21 @@ $rows = $db->query($sql);
         
         <!-- Modal body -->
         <div class="modal-body"> 
-        <h6>Activity</h6>
-         <input type="text"></input> 
-         <h6>When?</h6>
-         <input type="date"></input> 
-         <h6>Priority</h6>
-         <select>   
-         <option>Urgency</option> 
-         <option>Not-Urgency</option> 
-         <option>Relax</option>
-         
-         
-         </select>
+     
+            <h6>Activity</h6>
+            <input type="text" id="task" name="task"></input> 
+             <h6>When?</h6>
+            <input type="date" id="date"  name="date"></input> 
+             <h6>Priority</h6>
+            <input  name="priority">   
+                    
+              </input> 
+   
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="save"   name="save" value="Add Task">Save</button>
         </div>
         
       </div>
@@ -125,21 +124,25 @@ $rows = $db->query($sql);
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
-        <!-- Modal body -->
-        <div class="modal-body"> 
+        <!-- Modal body --> 
+        <?php  
+        
+        while($result=mysqli_fetch_assoc($rows)){ 
+
+            echo" 
+        <div class='modal-body'> 
         <h6>Activity</h6>
-         <input type="text"></input> 
+         <input type='text'>".$result['name']."</input> 
          <h6>When?</h6>
-         <input type="date"></input> 
+         <input type='date'>".$result['date']."</input> 
          <h6>Priority</h6>
-         <select>   
-         <option>Urgency</option> 
-         <option>Not-Urgency</option> 
-         <option>Relax</option>
          
          
-         </select>
-        </div>
+         
+        </div>  
+        "; 
+        } 
+        ?>
         
         <!-- Modal footer -->
         <div class="modal-footer">
