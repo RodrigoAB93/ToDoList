@@ -2,6 +2,7 @@
 <?php 
 include('db.php');    
 
+
 $sql = "select *from task";   
 
 $rows = $db->query($sql); 
@@ -17,7 +18,7 @@ $rows = $db->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Bootstrap CSS --> 
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body class="body">  
@@ -27,10 +28,11 @@ $rows = $db->query($sql);
      <div class="row">  
        
 
-         <div class="col-sm-5 col-sm-8 col-md-10 col-md-3  col-sm-3 col-md-offset-1">  
-         <table class="table"> 
-             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" href="add.php">Add Task</button> 
+         <div class="col-sm-5 col-sm-8 col-md-10 col-md-3  col-sm-3 col-md-offset-1">   
+         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" href="add.php">Add Task</button> 
            <button class="btn" id="print">Print</button>
+         <table class="table"> 
+       
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -91,22 +93,19 @@ $rows = $db->query($sql);
         
         <!-- Modal body -->
         <div class="modal-body"> 
-     
+     <form method="post" id='save' action="add.php">
             <h6>Activity</h6>
             <input type="text" id="task" name="task"></input> 
              <h6>When?</h6>
             <input type="date" id="date"  name="date"></input> 
              <h6>Priority</h6>
-            <input  name="priority">   
-                    
-              </input> 
-   
+            <input  type="text" name="priority" id="priority"></input>         
+            <input name="save" id="save" class="btn btn-success" type="submit" value="Save">
+
+   </form>
         </div>
         
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" id="save"   name="save" value="Add Task">Save</button>
-        </div>
+      
         
       </div>
     </div>
