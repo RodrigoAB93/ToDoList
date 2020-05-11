@@ -53,18 +53,20 @@ $rows = $db->query($sql);
             <th scope='row'>".$result['id']."</th>
             <td>".$result['name']."</td>
             <td>".$result['data']."</td>
-            <td>".$result['importance']."</td> 
-            <td> 
+            <td>".$result['importance']."</td>  
+            
+            "; 
+            echo"
+            <td>  
             <button class='btn' id='edit' data-toggle='modal' data-target='#EditModal'>Edit</button> 
-            <button class='btn' id='del'>Delete</button>
+            <a id='del' href='delete.php?id=".$result['id']."'><button class='btn' id='del' >Delete</a></button>
             </td>       
-            
-            
-            
-            
-            </tr> 
-            
+            </tr>  
             ";
+            
+            
+      
+            
         }
   
       ?>

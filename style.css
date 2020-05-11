@@ -47,4 +47,9 @@ th,td{
 #edit{ 
     background-color: rgb(70, 192, 100); 
     color: white;
+}  
+
+#delete{ 
+    text-decoration:none;  
+
 }
