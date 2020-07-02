@@ -58,7 +58,7 @@ $rows = $db->query($sql);
             "; 
             echo"
             <td>  
-            <button class='btn' id='edit' data-toggle='modal' data-target='#EditModal'>Edit</button> 
+            <a id='edit'><button class='btn' id='edit' data-toggle='modal' data-target='#EditModal'>Edit</a></button> 
             <a id='del' href='delete.php?id=".$result['id']."'><button class='btn' id='del' >Delete</a></button>
             </td>       
             </tr>  
@@ -95,13 +95,23 @@ $rows = $db->query($sql);
         
         <!-- Modal body -->
         <div class="modal-body"> 
-     <form method="post" id='save' action="add.php">
-            <h6>Activity</h6>
+     <form method="post" id='save' action="add.php"> 
+                 <h6>Activity</h6>
             <input type="text" id="task" name="task"></input> 
              <h6>When?</h6>
             <input type="date" id="date"  name="date"></input> 
              <h6>Priority</h6>
-            <input  type="text" name="priority" id="priority"></input>         
+           
+          
+          <select name="priority" id="priority">   
+            <option value="Relax">Relax</option> 
+            <option value="On the time">On the time</option> 
+            <option value="Danger">Danger</option>
+
+          </select>
+          
+          
+               
             <input name="save" id="save" class="btn btn-success" type="submit" value="Save">
 
    </form>
@@ -111,49 +121,52 @@ $rows = $db->query($sql);
         
       </div>
     </div>
-  </div>
-</div> 
+  </div> 
 
-<!--Modal Edit--> 
-<div class="modal" id="EditModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Edit task</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body --> 
-        <?php  
-        
-        while($result=mysqli_fetch_assoc($rows)){ 
 
-            echo" 
-        <div class='modal-body'> 
-        <h6>Activity</h6>
-         <input type='text'>".$result['name']."</input> 
-         <h6>When?</h6>
-         <input type='date'>".$result['date']."</input> 
-         <h6>Priority</h6>
-         
-         
-         
-        </div>  
-        "; 
-        } 
-        ?>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
-        </div>
-        
+
+
+<!--Edit  Modal -->
+<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body"> 
+      <?php    
+    $rows1 = "UPDATE name,date,importance SET todolist"; 
+
+
+    while($result=mysqli_fetch_assoc($rows1)){  
+      echo"
+      <h6>Activity</h6> 
+      <form method='post' id='save' action='update.php'> 
+            <input type='text' id='task' name='task' >".$result['name']."</input> 
+             <h6>When?</h6>
+            <input type='date' id='date'  name='date'>".$result['date']."</input> 
+             <h6>Priority</h6>
+            <input  type='text' name='priority' id='priority'>".$result['importance']."</input>         
+            
+            </form>
+            "; 
+          
+       } 
+       ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
       </div>
     </div>
   </div>
 </div>
+</div> 
+
+
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

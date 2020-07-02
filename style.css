@@ -10,7 +10,7 @@ table{
 
 h1{ 
     text-align: center;  
-    background-color: rgb(12, 80, 59);  
+    background: linear-gradient(to right, #226774, #199b5e); 
     margin: 10px 0px 0px 0px;
     width:100%; 
     height:10%; 
@@ -25,17 +25,19 @@ th,td{
 }
 
 .container{ 
-    background-color:rgb(196, 207, 197); 
+    background-color:rgb(174, 197, 174); 
     align-items:center;
     height:75vh; 
     margin: 100px 100px 90px 100px;
-    width: 30vw;
+    width: 30vw; 
+    border:1px solid #227222;
 } 
 
 #print{  
     float: right;
     position: absolute;
-    background-color: rgb(70, 192, 100);
+    background-color: rgb(2, 139, 36); 
+    
     color: white;
     margin: 0px 0px 0px 101%;
 
@@ -45,7 +47,7 @@ th,td{
     color: white;
 }
 #edit{ 
-    background-color: rgb(70, 192, 100); 
+    background-color:rgb(2, 139, 36); 
     color: white;
 }  
 

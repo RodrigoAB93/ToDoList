@@ -3,9 +3,6 @@
 <?php
  include('db.php');      
 
-
-
-
     $delete=$_GET['id']; 
 
 
