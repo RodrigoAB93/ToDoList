@@ -2,7 +2,7 @@
 
 $db = new mysqli(); 
 
-$db ->connect('localhost','root','','todolist'); 
+$db = mysqli_connect('localhost','root','','todolist'); 
 
 
 

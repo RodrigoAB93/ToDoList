@@ -50,7 +50,7 @@ $rows = $db->query($sql);
 
             echo"   
             <tr> 
-            <th scope='row'>".$result['id']."</th>
+             <th scope='row'>".$result['id']."</th>
             <td>".$result['name']."</td>
             <td>".$result['data']."</td>
             <td>".$result['importance']."</td>  
@@ -58,7 +58,7 @@ $rows = $db->query($sql);
             "; 
             echo"
             <td>  
-            <a id='edit'><button class='btn' id='edit' data-toggle='modal' data-target='#EditModal'>Edit</a></button> 
+            <button class='btn' id='edit' name='send' data-toggle='modal' data-target='#EditModal'><a id='edit'href='update.php?id=".$result['id']."'>Edit</a></button> 
             <a id='del' href='delete.php?id=".$result['id']."'><button class='btn' id='del' >Delete</a></button>
             </td>       
             </tr>  
@@ -121,47 +121,12 @@ $rows = $db->query($sql);
         
       </div>
     </div>
-  </div> 
+  </div>
 
 
 
 
-<!--Edit  Modal -->
-<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Modal</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-      <div class="modal-body"> 
-      <?php    
-    $rows1 = "UPDATE name,date,importance SET todolist"; 
 
-
-    while($result=mysqli_fetch_assoc($rows1)){  
-      echo"
-      <h6>Activity</h6> 
-      <form method='post' id='save' action='update.php'> 
-            <input type='text' id='task' name='task' >".$result['name']."</input> 
-             <h6>When?</h6>
-            <input type='date' id='date'  name='date'>".$result['date']."</input> 
-             <h6>Priority</h6>
-            <input  type='text' name='priority' id='priority'>".$result['importance']."</input>         
-            
-            </form>
-            "; 
-          
-       } 
-       ?>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
-      </div>
-    </div>
   </div>
 </div>
 </div> 
